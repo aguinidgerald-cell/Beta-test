@@ -1,0 +1,112 @@
+-- [[ 🌐 GHOST SHIELD ELITE V4.3 - OBFUSCATED ]] --
+-- [[ 👤 OWNER: GERALD TITAN ELITE ]] --
+-- [[ 📅 VALID UNTIL: JANUARY 25, 2026 ]] --
+
+local _0x50 = game:GetService("Players")
+local _0x48 = game:GetService("HttpService")
+local _0x54 = game:GetService("TweenService")
+local _0x55 = game:GetService("UserInputService")
+local _0x50_L = _0x50.LocalPlayer
+
+local _0x54_T = {
+    _0x50_R = Color3.fromRGB(0, 255, 255),
+    _0x42_G = Color3.fromRGB(10, 10, 15),
+    _0x53_C = Color3.fromRGB(0, 255, 100),
+    _0x47_L = Color3.fromRGB(255, 215, 0)
+}
+
+local _0x4E_C = {
+    _0x42_U = "https://api.jsonblob.com/api/jsonBlob/",
+    _0x44_I = "019bc2e3-562e-79f2-9cc4-87560c94252e", 
+    _0x53_I = 3,
+    _0x50_I = tostring(math.random(1000, 9999)) .. _0x50_L.UserId
+}
+
+local _0x54_U = Instance.new("ScreenGui", _0x50_L:WaitForChild("PlayerGui"))
+_0x54_U.Name = "TitanGlobalChat"
+
+local _0x4D_F = Instance.new("Frame", _0x54_U)
+_0x4D_F.Size = UDim2.new(0, 300, 0, 350)
+_0x4D_F.Position = UDim2.new(0.5, -150, 0.5, -175)
+_0x4D_F.BackgroundColor3 = _0x54_T._0x42_G
+_0x4D_F.Active = true
+_0x4D_F.Draggable = true
+Instance.new("UICorner", _0x4D_F)
+
+local _0x54_L = Instance.new("TextLabel", _0x4D_F)
+_0x54_L.Size = UDim2.new(1, 0, 0, 40)
+_0x54_L.Text = "🌐 TITAN GLOBAL LINK V4.3"
+_0x54_L.TextColor3 = _0x54_T._0x50_R
+_0x54_L.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
+_0x54_L.Font = Enum.Font.GothamBlack
+_0x54_L.TextSize = 16
+Instance.new("UICorner", _0x54_L)
+
+local _0x43_D = Instance.new("ScrollingFrame", _0x4D_F)
+_0x43_D.Size = UDim2.new(0.9, 0, 0, 220)
+_0x43_D.Position = UDim2.new(0.05, 0, 0.15, 0)
+_0x43_D.BackgroundTransparency = 0.8
+_0x43_D.CanvasSize = UDim2.new(0, 0, 10, 0)
+local _0x4C_Y = Instance.new("UIListLayout", _0x43_D)
+
+local _0x49_N = Instance.new("TextBox", _0x4D_F)
+_0x49_N.Size = UDim2.new(0.7, 0, 0, 40)
+_0x49_N.Position = UDim2.new(0.05, 0, 0.85, 0)
+_0x49_N.PlaceholderText = "Type message..."
+_0x49_N.BackgroundColor3 = Color3.fromRGB(30, 30, 35)
+_0x49_N.TextColor3 = Color3.fromRGB(255, 255, 255)
+Instance.new("UICorner", _0x49_N)
+
+local _0x53_B = Instance.new("TextButton", _0x4D_F)
+_0x53_B.Size = UDim2.new(0.2, 0, 0, 40)
+_0x53_B.Position = UDim2.new(0.78, 0, 0.85, 0)
+_0x53_B.Text = "🚀"
+_0x53_B.BackgroundColor3 = _0x54_T._0x50_R
+Instance.new("UICorner", _0x53_B)
+
+local function _0x41_M(_0x53_E, _0x4D_S, _0x49_G)
+    local _0x4C_B = Instance.new("TextLabel", _0x43_D)
+    _0x4C_B.Size = UDim2.new(1, 0, 0, 25)
+    _0x4C_B.Text = "[" .. (_0x49_G and "GLOBAL" or "SYSTEM") .. "] " .. _0x53_E .. ": " .. _0x4D_S
+    _0x4C_B.TextColor3 = _0x49_G and _0x54_T._0x47_L or _0x54_T._0x53_C
+    _0x4C_B.BackgroundTransparency = 1
+    _0x4C_B.TextXAlignment = Enum.TextXAlignment.Left
+    _0x4C_B.TextWrapped = true
+    _0x43_D.CanvasPosition = Vector2.new(0, _0x43_D.AbsoluteCanvasSize.Y)
+end
+
+local function _0x46_M()
+    pcall(function()
+        local _0x52_E = _0x48:GetAsync(_0x4E_C._0x42_U .. _0x4E_C._0x44_I)
+        local _0x44_A = _0x48:JSONEncode(_0x52_E)
+    end)
+end
+
+local function _0x53_M()
+    local _0x4D_G = _0x49_N.Text
+    if _0x4D_G ~= "" then
+        _0x41_M("YOU", _0x4D_G, true)
+        _0x49_N.Text = ""
+        pcall(function()
+            local _0x44_T = {sender = _0x50_L.Name, content = _0x4D_G}
+            _0x48:RequestAsync({
+                Url = _0x4E_C._0x42_U .. _0x4E_C._0x44_I,
+                Method = "PUT",
+                Headers = {["Content-Type"] = "application/json"},
+                Body = _0x48:JSONEncode(_0x44_T)
+            })
+        end)
+    end
+end
+
+_0x53_B.MouseButton1Click:Connect(_0x53_M)
+_0x49_N.FocusLost:Connect(function(_0x45_N) if _0x45_N then _0x53_M() end end)
+
+task.spawn(function()
+    while task.wait(_0x4E_C._0x53_I) do
+        _0x46_M()
+    end
+end)
+
+_0x41_M("SYSTEM", "Global Network Active.", false)
+_0x41_M("STATUS", "Undetected until 01/25/2026", false)
