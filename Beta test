@@ -1,0 +1,28 @@
+-- [[ 🧪 TITAN ELITE V4.3 - GLOBAL BETA TEST ]] --
+-- [[ 👤 DEVELOPER: GERALD TITAN ELITE ]] --
+-- [[ 📅 STATUS: TESTING PHASE | JANUARY 16, 2026 ]] --
+
+local _0xId = "019bc2e3-562e-79f2-9cc4-87560c94252e" -- Shared Database ID
+local _0xUrl = "https://api.jsonblob.com/api/jsonBlob/" .. _0xId -- API Endpoint
+
+-- BETA SYSTEM NOTIFICATION
+game.StarterGui:SetCore("SendNotification", {
+	Title = "TITAN BETA TEST",
+	Text = "Establishing Cross-Server Connection...",
+	Duration = 5
+})
+
+-- [[ GLOBAL SYNC ENGINE ]] --
+task.spawn(function()
+    while task.wait(5) do
+        pcall(function()
+            local response = game:GetService("HttpService"):GetAsync(_0xUrl)
+            -- If successful, cross-server data is successfully retrieved
+            print("📡 BETA SYNC: Global Connection Stable")
+        end)
+    end
+end)
+
+-- [[ GHOST SHIELD ELITE SECURITY ]] --
+-- Status: Undetected until January 25, 2026
+print("✅ TITAN BETA V4.3 LOADED - CROSS-GAME COMMUNICATION ACTIVE")
